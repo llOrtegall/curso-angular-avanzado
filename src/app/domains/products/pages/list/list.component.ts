@@ -28,7 +28,7 @@ export default class ListComponent implements OnInit, OnChanges {
   private cartService = inject(CartService);
   private productService = inject(ProductService);
   private categoryService = inject(CategoryService);
-  @Input() category_id?: string;
+  @Input() slug?: string;
 
   ngOnInit() {
     this.getCategories();
@@ -44,8 +44,8 @@ export default class ListComponent implements OnInit, OnChanges {
   }
 
   private getProducts() {
-    this.productService.getProducts(this.category_id).subscribe({
-      next: (products) => {
+    this.productService.getProducts({ category_slug: this.slug }).subscribe({
+      next: products => {
         this.products.set(products);
       },
     });
@@ -53,7 +53,7 @@ export default class ListComponent implements OnInit, OnChanges {
 
   private getCategories() {
     this.categoryService.getAll().subscribe({
-      next: (data) => {
+      next: data => {
         this.categories.set(data);
       },
     });
