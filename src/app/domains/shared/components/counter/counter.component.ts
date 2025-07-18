@@ -42,8 +42,8 @@ export class CounterComponent
   ngOnInit() {
     console.log('ngOnInit');
     console.log('-'.repeat(10));
-    console.log('duration =>', this.duration);
-    console.log('message =>', this.message);
+    console.log('duration =>', this.duration());
+    console.log('message =>', this.message());
     this.counterRef = window.setInterval(() => {
       console.log('run interval');
       this.counter.update(statePrev => statePrev + 1);
