@@ -7,6 +7,9 @@
     soluta, ad et eveniet odit rem perferendis porro, quidem iste.
   </p>
   <p class="text-base">Numero de clientes</p>
+  <p>
+    <input type="range" min="0" max="1000" [(ngModel)]="duration" />
+  </p>
   @if (duration() > 0) {
     <app-counter [duration]="duration()" [message]="message()" />
   }
